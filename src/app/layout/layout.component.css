@@ -1,0 +1,18 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.button {
+  margin-right: 29px !important;
+}
+
+@media screen and (max-width: 600px) {
+  .ocultar-div {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 602px) {
+  #ocultar {
+    display:none;
+  }
+}

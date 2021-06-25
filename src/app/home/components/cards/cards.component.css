@@ -1,0 +1,20 @@
+.espacio {
+  margin: 5%;
+  border-radius: 17px;
+  min-height: 160px !important;
+  background: rgb(174, 192, 238);
+  background: radial-gradient(
+    circle,
+    rgba(174, 192, 238, 1) 0%,
+    rgba(159, 148, 233, 1) 100%
+  );
+}
+
+div {
+  align-items: center;
+  justify-content: center;
+  padding:2%;
+}
+
+
+

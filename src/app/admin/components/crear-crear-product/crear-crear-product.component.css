@@ -1,0 +1,20 @@
+.dialogo{
+  text-align: center;
+
+}
+.file{
+  text-align: center;
+  max-width: 70%;
+  margin-left: 45px;
+}
+.input{
+  text-align: center;
+  max-width: 70%;
+}
+
+button{
+  margin-top: 0px;
+  margin-right: 6px;
+}
+
+

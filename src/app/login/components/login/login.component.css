@@ -1,0 +1,36 @@
+.example-card {
+  margin-top: 7%;
+  margin-left: 35%;
+  max-width: 386px;
+  min-height: 267px;
+  text-align: center;
+  padding-top: 88px;
+  border-radius: 20px;
+  background: rgb(205, 189, 189);
+  background: radial-gradient(
+    circle,
+    rgba(205, 189, 189, 1) 31%,
+    rgba(202, 201, 213, 1) 100%
+  );
+}
+.a{
+  margin-top: 5px;
+  margin-left:10%;
+  border-radius: 10px;
+}
+
+button {
+  margin-left: 5px;
+}
+.mat-form-field {
+  width: 67%;
+}
+
+@media screen and (max-width: 600px) {
+  .example-card {
+    margin-top: 26%;
+    margin-left: 8%;
+    max-width: 276px;
+  }
+}
+

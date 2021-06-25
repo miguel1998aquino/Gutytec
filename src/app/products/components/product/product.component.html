@@ -1,0 +1,35 @@
+<div *ngIf="productos">
+  <h1 class="example-card">Productos</h1>
+  <div class="example-card">
+    <mat-card [class.mat-elevation-z20]="true" *ngFor="let p of productos">
+      <mat-card-header class="example-card">
+        <mat-card-title class="example-card">{{p.nombre}}</mat-card-title>
+      </mat-card-header>
+      <!-- <img
+        mat-card-lg-image
+        src="{{ url + 'propietario/imagen/' + product.imagen }}"
+        alt="{{ product.nombre }}"
+        *ngIf="product.imagen !== 'image'"
+      /> -->
+      <img
+        mat-card-lg-image
+        src="{{p?.image}}"
+        alt="{{p.nombre}}"
+      />
+      <mat-card-content>
+        <p>
+          {{p.descripcion}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="detalle(p.id)"  mat-raised-button color="primary">
+          Ver
+        </button>
+        <button mat-raised-button color="primary">
+          Comprar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>

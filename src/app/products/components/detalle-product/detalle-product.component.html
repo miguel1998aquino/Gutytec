@@ -1,0 +1,15 @@
+<mat-card *ngIf="product">
+  <div class="container">
+    <mat-card-title>{{product.nombre}}</mat-card-title>
+    <img src="{{ product.image}}" alt="{{ product.nombre}}">
+    <mat-card-content>
+      <p> {{product.descripcion}}</p>
+      <p>Precio: {{product.precio}}</p>
+      <p>Categoria: {{product.categoria}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" (click)="cancel()">Cancelar</button>
+    </mat-card-actions>
+  </div>
+  </mat-card>
+

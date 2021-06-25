@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+.section{
+  text-align: center;
+  color:black;
+  background-color:rgb(126, 180, 180);
+}
+
+span{
+  margin-right:30%
+}

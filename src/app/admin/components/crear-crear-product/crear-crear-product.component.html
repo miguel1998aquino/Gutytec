@@ -1,0 +1,46 @@
+<div class="dialogo">
+  <h2 mat-dialog-title>{{title}}</h2>
+  <mat-dialog-content>
+    <form [formGroup]="crearProducto">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre del producto" formControlName="nombre" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput formControlName="descripcion" placeholder="ingrese descripcion"></textarea>
+      </mat-form-field>
+        <div class="mt-2 mb-4">
+          <input type="file" (change)="FotoEvento($event)" class="input">
+          <mat-progress-bar *ngIf="cargando == true" mode="indeterminate" class="mt-2 file"></mat-progress-bar>
+        </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number"  placeholder="Ingrese el Precio" formControlName="precio" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number"  placeholder="Ingrese stock" formControlName="stock" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Categorias</mat-label>
+        <mat-select id="categoria" formControlName="categoria">
+          <mat-option *ngFor="let c of category" value="{{c.id}}">{{c.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-mini-fab disabled >
+          <mat-icon color="primary" (click)="cancelar()">keyboard_return</mat-icon>
+        </button>
+        <button *ngIf="crearProducto.valid && title =='Editar Producto'" mat-mini-fab disabled >
+          <mat-icon (click)="agregaEditar()" color="primary">edit_note</mat-icon>
+        </button>
+        <button *ngIf="crearProducto.valid && title=='Crear Producto'" mat-mini-fab disabled >
+          <mat-icon (click)="agregaEditar()" color="primary">add_circle</mat-icon>
+        </button>
+      </mat-card-actions>
+
+    </form>
+  </mat-dialog-content>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="dialogo">
+  <h1 mat-dialog-title>Crear Usuario</h1>
+  <mat-dialog-content>
+    <form [formGroup]="crearCategoria">
+      <mat-form-field appearance="fill">
+        <mat-label>Categoria</mat-label>
+        <input matInput placeholder="Categoria a ingresar" formControlName="nombre" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput formControlName="descripcion" placeholder="ingrese descripcion"></textarea>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-mini-fab disabled >
+          <mat-icon color="accent" (click)="cancelar()">keyboard_return</mat-icon>
+        </button>
+        <!-- <button  mat-mini-fab disabled >
+          <mat-icon (click)="agregarEditar()" color="primary">edit_note</mat-icon>
+        </button> -->
+        <button   mat-mini-fab disabled >
+          <mat-icon (click)="agregarCategoria()" color="primary">add_circle</mat-icon>
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-dialog-content>
+
+</div>

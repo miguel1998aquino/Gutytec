@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "tiendasullana-8906d": {
+      "hosting": {
+        "tienda": [
+          "tiendasullana-8906d"
+        ]
+      }
+    }
+  }
+}
