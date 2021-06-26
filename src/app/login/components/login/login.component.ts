@@ -51,4 +51,10 @@ export class LoginComponent implements OnInit {
         });
     }
   }
+
+  google(){
+    this.auth.logear().then(() => {
+      this.router.navigate(['admin']);
+    }).catch((err) => {console.log(err)})
+  }
 }

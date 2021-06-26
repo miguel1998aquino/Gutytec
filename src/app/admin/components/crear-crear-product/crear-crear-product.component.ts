@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/core/services/category.service';
 import { Category } from 'src/app/core/models/category.interface';
 import { Product } from 'src/app/core/models/product.interface';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-crear-crear-product',
@@ -28,7 +29,8 @@ export class CrearCrearProductComponent implements OnInit {
     private storage: AngularFireStorage,
     private productoService: ProductService,
     private categoryService: CategoryService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authService: AuthService
   ) {
     this.cargando = false;
     this.title = 'Crear Producto';
@@ -43,6 +45,7 @@ export class CrearCrearProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.probarUser();
     this.EsEditar();
     this.traerCategorys();
   }
@@ -156,5 +159,13 @@ export class CrearCrearProductComponent implements OnInit {
 
   cancelar() {
     this.dialogRef.close();
+  }
+
+  probarUser(){
+    this.authService.hasUser().subscribe(res=>{
+      console.log(res);
+      console.log(res?.email)
+
+    })
   }
 }

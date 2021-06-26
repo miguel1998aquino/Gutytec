@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Product } from 'src/app/core/models/product.interface';
+import { CarritoService } from 'src/app/core/services/carrito.service';
 import { ProductService } from 'src/app/core/services/product.service';
 import { DetalleProductComponent } from '../detalle-product/detalle-product.component';
 
@@ -14,7 +15,9 @@ export class ProductComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private productService: ProductService) {}
+    private productService: ProductService,
+    private carritoService:CarritoService,
+  ) {}
 
   ngOnInit(): void {
     this.traerProductos();
@@ -30,23 +33,29 @@ export class ProductComponent implements OnInit {
         });
       });
 
-      this.productos.forEach((product)=>{
-          this.productService.categorias(product.categoria).subscribe((categori)=>{
-          product.categoria=categori.payload.data().nombre;
-        })
+      this.productos.forEach((product) => {
+        this.productService
+          .categorias(product.categoria)
+          .subscribe((categori) => {
+            product.categoria = categori.payload.data().nombre;
+          });
+      });
     });
-    })
   }
 
-  detalle(id:any){
+  detalle(id: any) {
     const dialogRef = this.dialog.open(DetalleProductComponent, {
-      height: '530px',width:'400px',
-          data: id,
-        });
+      height: '530px',
+      width: '400px',
+      data: id,
+    });
 
-        dialogRef.afterClosed().subscribe((result) => {
-          console.log(`Dialog result: ${result}`);
-        });
-      }
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
+  Comprar(producto:Product){
+    this.carritoService.addCarrito(producto);
+  }
 }

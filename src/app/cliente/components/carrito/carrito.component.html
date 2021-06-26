@@ -1,0 +1,94 @@
+<div class="example-card" *ngIf="Productos.length == 0">
+  <mat-card>
+    <mat-card-title> No existen Productos agregados </mat-card-title>
+  </mat-card>
+</div>
+
+<div *ngIf="Productos.length > 0">
+  <mat-horizontal-stepper #stepper>
+    <mat-step>
+      <div class="example-card">
+        <mat-card *ngFor="let product of Productos">
+          <mat-card-header>
+            <mat-card-title>{{ product.nombre }}</mat-card-title>
+          </mat-card-header>
+          <img
+            mat-card-lg-image
+            src="{{ product.image}}"
+            alt="{{ product.nombre }}"
+          />
+          <mat-card-content>
+            <p>
+              {{ product.descripcion }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="CrearPedido" errorMessage="Los Datos son requeridos">
+      <form [formGroup]="CrearPedido" class="formulario">
+        <ng-template matStepLabel>Ingrese sus Datos</ng-template>
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Ingrese su Nombre" formControlName="nombre" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Apellido</mat-label>
+          <input matInput placeholder="Ingrese su Apellido" formControlName="apellido" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Direccion</mat-label>
+          <input matInput placeholder="Ingrese su Direccion" formControlName="direccion" required />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Telephone</mat-label>
+          <span matPrefix>+51 &nbsp;</span>
+          <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Referencia</mat-label>
+          <input
+            matInput
+            placeholder="Ingrese su referencia de su casa"
+            required formControlName="referencia"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" required formControlName="email"/>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext (click)="comprar()">Comprar</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Exito</ng-template>
+      <!-- <mat-card *ngIf="pedido">
+        <mat-card-title>Pedido Hecho con exito</mat-card-title>
+        <mat-card-subtitle>Hola {{pedido.nombre+''+pedido.apellido}}</mat-card-subtitle>
+        <mat-dialog-content>
+          <p>Gracias por tu preferencia tu pedido se registro con exito</p>
+          <p>se te registro un total de {{pedido.producto.length}} pedidos el cual el
+            precio registrado es de {{pedido.precio}}
+          </p>
+          <p>
+            en unos instantes se procedera a comunicarte al numero +51-{{pedido.celular}}
+            para poder coordinar el envio y confirmar su direccion {{pedido.direccion}} y su Referencia
+            {{pedido.refrencia}}.
+          </p>
+          <p>Gracias por tu preferencia.......</p>
+        </mat-dialog-content>
+      </mat-card> -->
+      <div>
+        <button mat-button (click)="Productos = [];">OK</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+
