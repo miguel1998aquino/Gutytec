@@ -30,6 +30,12 @@ const routes: Routes = [
         loadChildren: () =>
           import('./admin/admin.module').then((m) => m.AdminModule),
       },
+      {
+        path: 'cliente',
+        canActivate:[AdminGuard],
+        loadChildren: () =>
+          import('./cliente/Cliente.module').then((m) => m.ClienteModule),
+      },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ],
   },

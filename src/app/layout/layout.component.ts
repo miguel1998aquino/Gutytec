@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
+import { CarritoService } from '../core/services/carrito.service';
 
 @Component({
   selector: 'app-layout',
@@ -21,7 +22,8 @@ export class LayoutComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     public auth: AuthService,
-    private router:Router
+    private router:Router,
+    public carritoService: CarritoService
   ) {}
 
   salir() {

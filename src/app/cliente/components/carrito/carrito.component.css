@@ -9,17 +9,16 @@
 }
 
 mat-card {
-  margin: 10px;
-  width: 300px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50%;
 }
 
 mat-card-content {
   margin: 20px;
 }
-.mat-form-field {
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  margin-left:10%;
-  margin-right:10%;
+
+.hola{
+  margin-left:20%;
+  text-align: center;
 }

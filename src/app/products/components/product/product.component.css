@@ -20,4 +20,9 @@ mat-card-content {
 button {
   margin-bottom: 5px;
 }
+.centrar{
+  margin-top:15%;
+  margin-left:50%;
+  width: 50%;
+}
 

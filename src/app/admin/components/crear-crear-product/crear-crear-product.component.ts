@@ -18,6 +18,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class CrearCrearProductComponent implements OnInit {
   crearProducto: FormGroup;
+  data:any
   image$!: Observable<any>;
   public title: string;
   category: Category[] = [];
@@ -65,13 +66,14 @@ export class CrearCrearProductComponent implements OnInit {
     if (this.id != null) {
       this.title = 'Editar Producto';
       this.productoService.verProduct(this.id).subscribe((data) => {
+        this.data=data
         this.crearProducto.setValue({
-          nombre: data.payload.data().nombre,
-          descripcion: data.payload.data().descripcion,
-          precio: data.payload.data().precio,
-          categoria: data.payload.data().categoria,
-          image:data.payload.data().image,
-          stock: data.payload.data().stock,
+          nombre: this.data.nombre,
+          descripcion: this.data.descripcion,
+          precio: this.data.precio,
+          categoria: this.data.categoria,
+          image:this.data.image,
+          stock: this.data.stock,
         });
       });
     }

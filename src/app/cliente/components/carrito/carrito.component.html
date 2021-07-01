@@ -14,7 +14,7 @@
           </mat-card-header>
           <img
             mat-card-lg-image
-            src="{{ product.image}}"
+            src="{{ product.image }}"
             alt="{{ product.nombre }}"
           />
           <mat-card-content>
@@ -25,47 +25,24 @@
         </mat-card>
       </div>
       <div>
-        <button mat-button matStepperNext>Siguiente</button>
+        <button mat-raised-button color="primary" matStepperNext>
+          Siguiente
+        </button>
       </div>
     </mat-step>
-    <mat-step [stepControl]="CrearPedido" errorMessage="Los Datos son requeridos">
-      <form [formGroup]="CrearPedido" class="formulario">
-        <ng-template matStepLabel>Ingrese sus Datos</ng-template>
-        <mat-form-field>
-          <mat-label>Nombre</mat-label>
-          <input matInput placeholder="Ingrese su Nombre" formControlName="nombre" required />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Apellido</mat-label>
-          <input matInput placeholder="Ingrese su Apellido" formControlName="apellido" required />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Direccion</mat-label>
-          <input matInput placeholder="Ingrese su Direccion" formControlName="direccion" required />
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Telephone</mat-label>
-          <span matPrefix>+51 &nbsp;</span>
-          <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
-          <mat-icon matSuffix>phone</mat-icon>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Referencia</mat-label>
-          <input
-            matInput
-            placeholder="Ingrese su referencia de su casa"
-            required formControlName="referencia"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Enter your email</mat-label>
-          <input matInput placeholder="pat@example.com" required formControlName="email"/>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext (click)="comprar()">Comprar</button>
-        </div>
-      </form>
+    <mat-step>
+      <ng-template matStepLabel>Confirma tu pedido</ng-template>
+      <mat-card class="hola">
+        <mat-card-title>Confirmacion de Pedido</mat-card-title>
+        <mat-dialog-content>
+          <p>Porfavor confirme su Pedido</p>
+        </mat-dialog-content>
+      </mat-card>
+      <div>
+        <button mat-raised-button color="primary" matStepperNext (click)="comprar()">
+          Confirmar
+        </button>
+      </div>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Exito</ng-template>
@@ -86,9 +63,8 @@
         </mat-dialog-content>
       </mat-card> -->
       <div>
-        <button mat-button (click)="Productos = [];">OK</button>
+        <button mat-button (click)="Productos = []">OK</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
 </div>
-

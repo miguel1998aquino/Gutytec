@@ -32,14 +32,6 @@ export class ProductComponent implements OnInit {
           ...element.payload.doc.data(),
         });
       });
-
-      this.productos.forEach((product) => {
-        this.productService
-          .categorias(product.categoria)
-          .subscribe((categori) => {
-            product.categoria = categori.payload.data().nombre;
-          });
-      });
     });
   }
 

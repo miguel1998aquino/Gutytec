@@ -4,6 +4,11 @@ import { CarritoService } from 'src/app/core/services/carrito.service';
 import { Product } from 'src/app/core/models/product.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { Order } from 'src/app/core/models/order.interface';
+import { OrderService } from 'src/app/core/services/order.service';
+import { ProductService } from 'src/app/core/services/product.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-carrito',
@@ -19,52 +24,65 @@ import { ToastrService } from 'ngx-toastr';
 export class CarritoComponent implements OnInit {
   public Productos: Product[] = [];
   public addPedidos: any[] = [];
+  public usuario: any;
   Totalprecio!: number;
-  CrearPedido: FormGroup;
+  stock:any;
   constructor(
     private carritoService: CarritoService,
-    private fb: FormBuilder,
-    private toastr: ToastrService
-  ) {
-    this.CrearPedido = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      direccion: ['', Validators.required],
-      referencia: ['', Validators.required],
-      telefono: ['', [Validators.required, Validators.maxLength(9)]],
-      email: ['', [Validators.required, Validators.email]],
-    });
-  }
+    private orders: OrderService,
+    private toastr: ToastrService,
+    private ServiceAuth: AuthService,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
     this.carrito();
+    this.traerUser();
+
+  }
+
+  traerUser() {
+    this.ServiceAuth.hasUser().subscribe((res) => {
+      console.log(res?.email);
+      const auth = {
+        cliente: res?.uid,
+        email: res?.email,
+      };
+      this.usuario = auth;
+    });
   }
 
   carrito() {
     this.Productos = this.carritoService.product;
   }
 
-  comprar(){
-    if (this.CrearPedido.invalid) {
-      return;
-    }
+  comprar() {
     var suma = 0;
     this.Productos.forEach((item) => {
       this.addPedidos.push(item.id);
       suma += item.precio;
       this.Totalprecio = suma;
     });
-    const carrito: any = {
-      nombre: this.CrearPedido.value.nombre,
-      apellido: this.CrearPedido.value.apellido,
-      direccion: this.CrearPedido.value.direccion,
-      referencia: this.CrearPedido.value.referencia,
-      celular: this.CrearPedido.value.telefono,
-      email: this.CrearPedido.value.email,
+    const pedidos: Order = {
+      cliente: this.usuario.cliente,
+      email: this.usuario.email,
       precio: this.Totalprecio,
-      producto: this.addPedidos,
+      productos: this.addPedidos,
     };
-    this.carritoService.resetearCarrito();
+    this.orders
+      .agregarOrder(pedidos)
+      .then((res) => {
+        this.toastr.success('Agregado al carrito', 'Exito');
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     // guardar el pedido
+    this.carritoService.resetearCarrito();
   }
+
+
+
 }

@@ -26,15 +26,20 @@ export class DetalleProductComponent implements OnInit {
   getProduct(){
     this.productService.verProduct(this.id).subscribe({
       next: (data:any) => {
-        const datos={
-          id: data.payload.id,
-          ...data.payload.data()
+        console.log(data);
+        const datos:Product={
+          nombre: data.nombre,
+          descripcion: data.descripcion,
+          categoria: data.categoria,
+          precio:data.precio,
+          stock:data.stock,
+          image: data.image,
         }
         this.product=datos;
         this.productService.categorias(this.product.categoria).subscribe(
-          category => {
-            console.log(category.payload.data().nombre);
-            this.product.categoria=category.payload.data().nombre
+          (category:any) => {
+            console.log(category.nombre);
+            this.product.categoria=category.nombre
           })
       }
     })

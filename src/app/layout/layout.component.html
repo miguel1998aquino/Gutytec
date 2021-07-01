@@ -35,11 +35,25 @@
   </button>
   <button
     mat-icon-button
+    matBadge="{{carritoService.product.length}}" matBadgeColor="warn"
     class="example-icon"
-    aria-label="Example icon-button with share icon" (click)="salir()"
+    [routerLink]="['cliente/carrito']"
+    aria-label="Example icon-button with share icon"
   >
     <mat-icon>local_grocery_store</mat-icon>
   </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    [matMenuTriggerFor]="options"
+  >
+    <mat-icon>settings</mat-icon>
+  </button>
+  <mat-menu #options="matMenu">
+    <button mat-menu-item [routerLink]="['cliente']">Perfil</button>
+    <button mat-menu-item (click)="salir()">salir</button>
+  </mat-menu>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

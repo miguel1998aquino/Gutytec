@@ -1,3 +1,7 @@
+<div class="centrar" *ngIf="!productos">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
+
 <div *ngIf="productos">
   <h1 class="example-card">Productos</h1>
   <div class="example-card">
@@ -5,18 +9,13 @@
       <mat-card-header class="example-card">
         <mat-card-title class="example-card">{{p.nombre}}</mat-card-title>
       </mat-card-header>
-      <!-- <img
-        mat-card-lg-image
-        src="{{ url + 'propietario/imagen/' + product.imagen }}"
-        alt="{{ product.nombre }}"
-        *ngIf="product.imagen !== 'image'"
-      /> -->
       <img
         mat-card-lg-image
         src="{{p?.image}}"
         alt="{{p.nombre}}"
       />
       <mat-card-content>
+        <p>{{p?.stock}}</p>
         <p>
           {{p.descripcion}}
         </p>

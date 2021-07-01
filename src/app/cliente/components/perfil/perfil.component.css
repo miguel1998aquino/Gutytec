@@ -1,0 +1,16 @@
+.example-card {
+  max-width: 400px;
+  border-radius:0px
+}
+
+.example-header-image {
+  
+  background-size: cover;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+}

@@ -4,18 +4,22 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { MyOrderComponent } from './components/my-order/my-order.component';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { ClienteRoutingModule } from './cliente-routing.module';
 
 
 
 @NgModule({
   declarations: [
     CarritoComponent,
-    MyOrderComponent
+    MyOrderComponent,
+    PerfilComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClienteRoutingModule,
   ]
 })
-export class OrderModule { }
+export class ClienteModule { }
