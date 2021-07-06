@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearCategoryComponent } from '../crear-category/crear-category.component';
 import { CrearCrearProductComponent } from '../crear-crear-product/crear-crear-product.component';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-dsabhboard',
@@ -19,20 +20,21 @@ export class DsabhboardComponent implements OnInit {
           { title: 'Prductos', cols: 1, rows: 1 },
           { title: 'Categorias', cols: 1, rows: 1 },
           { title: 'Usuarios', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Ordenes', cols: 1, rows: 1 }
         ];
       }
 
       return [
-        { title: 'Productos', cols: 2, rows: 1 },
+        { title: 'Productos', cols: 1, rows: 1 },
         { title: 'Categorias', cols: 1, rows: 1 },
         { title: 'Usuarios', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Ordenes', cols: 1, rows: 2 }
       ];
     })
   );
-  ngOnInit(): void {}
-  constructor(public dialog: MatDialog,private breakpointObserver: BreakpointObserver) {}
+  ngOnInit(): void {
+  }
+  constructor(private auth: AuthService, public dialog: MatDialog,private breakpointObserver: BreakpointObserver) {}
 
   createCategoria() {
     const dialogRef = this.dialog.open(CrearCategoryComponent, {
@@ -56,8 +58,9 @@ export class DsabhboardComponent implements OnInit {
   crear($value:any){
     if($value=="Categorias"){
       this.createCategoria()
-    }if ($value == "Productos" ) {
-      this.createProdcuto()
+    }else if($value == "Productos" ){
+        this.createProdcuto()
+
     }else{
       console.log($value)
     }

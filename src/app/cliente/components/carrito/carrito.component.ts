@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CarritoService } from 'src/app/core/services/carrito.service';
 import { Product } from 'src/app/core/models/product.interface';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Order } from 'src/app/core/models/order.interface';
 import { OrderService } from 'src/app/core/services/order.service';
 import { ProductService } from 'src/app/core/services/product.service';
-import { element } from 'protractor';
+
 
 @Component({
   selector: 'app-carrito',
@@ -25,6 +24,7 @@ export class CarritoComponent implements OnInit {
   public Productos: Product[] = [];
   public addPedidos: any[] = [];
   public usuario: any;
+  public datosPedido!:Order;
   Totalprecio!: number;
   stock:any;
   constructor(
@@ -32,7 +32,6 @@ export class CarritoComponent implements OnInit {
     private orders: OrderService,
     private toastr: ToastrService,
     private ServiceAuth: AuthService,
-    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +45,7 @@ export class CarritoComponent implements OnInit {
       console.log(res?.email);
       const auth = {
         cliente: res?.uid,
+        nombre: res?.displayName,
         email: res?.email,
       };
       this.usuario = auth;
@@ -69,10 +69,12 @@ export class CarritoComponent implements OnInit {
       precio: this.Totalprecio,
       productos: this.addPedidos,
     };
+    this.datosPedido=pedidos
     this.orders
       .agregarOrder(pedidos)
       .then((res) => {
         this.toastr.success('Agregado al carrito', 'Exito');
+
 
       })
       .catch((err) => {

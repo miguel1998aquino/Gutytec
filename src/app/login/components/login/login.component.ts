@@ -6,6 +6,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,9 @@ export class LoginComponent implements OnInit {
     public auth: AuthService,
     private router: Router,
     private dialog: MatDialog,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private userService:UsersService
   ) {
     this.login = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -28,11 +32,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   register() {
     const dialogRef = this.dialog.open(RegisterComponent, {
-      width: '270px',
+      width: '300px',
       panelClass: 'custom',
     });
     dialogRef.afterClosed().subscribe((result) => {});
@@ -43,18 +49,22 @@ export class LoginComponent implements OnInit {
       const value = this.login.value;
       this.auth
         .login(value.email, value.password)
-        .then(() => {
-          this.router.navigate(['admin']);
+        .then((result:any) => {
+          var id = result.user?.uid
+          this.localStorage(id)
+          this.router.navigate(['home']);
         })
         .catch((error) => {
-          console.log(error);
+          this.toastr.error('Tus Datos Ingresado no son validos','Invalido')
         });
     }
   }
 
-  google(){
-    this.auth.logear().then(() => {
-      this.router.navigate(['admin']);
-    }).catch((err) => {console.log(err)})
+  localStorage(uid:string){
+    this.userService.getUser(uid).subscribe((res)=>{
+      this.auth.guardarLocalStorage(res)
+    })
   }
+
+
 }

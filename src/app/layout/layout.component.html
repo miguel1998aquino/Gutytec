@@ -12,7 +12,7 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="['/home']">Home</button>
     <button mat-menu-item [routerLink]="['/product']">productos</button>
-    <button mat-menu-item [routerLink]="['/admin']">Admin</button>
+    <button mat-menu-item [routerLink]="['/admin']" *ngIf=" botones != null">Admin</button>
   </mat-menu>
   <span>My App</span>
   <span class="example-spacer"></span>
@@ -21,11 +21,12 @@
     <button class="button" mat-button [routerLink]="['/product']">
       Productos
     </button>
-    <button class="button" mat-button [routerLink]="['/admin']">Admin</button>
+    <button class="button" mat-button [routerLink]="['/admin']" *ngIf=" botones != null">Admin</button>
   </div>
   <span class="example-spacer"></span>
 
   <button
+  *ngIf=" botones == null"
     mat-icon-button
     class="example-icon favorite-icon"
     aria-label="Example icon-button with heart icon"
@@ -33,7 +34,7 @@
   >
     <mat-icon>login</mat-icon>
   </button>
-  <button
+  <button *ngIf=" botones != null"
     mat-icon-button
     matBadge="{{carritoService.product.length}}" matBadgeColor="warn"
     class="example-icon"
@@ -42,7 +43,7 @@
   >
     <mat-icon>local_grocery_store</mat-icon>
   </button>
-  <button
+  <button *ngIf=" botones != null"
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with share icon"

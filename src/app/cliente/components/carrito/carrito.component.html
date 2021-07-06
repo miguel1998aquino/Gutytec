@@ -46,22 +46,22 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Exito</ng-template>
-      <!-- <mat-card *ngIf="pedido">
+      <mat-card *ngIf="datosPedido">
         <mat-card-title>Pedido Hecho con exito</mat-card-title>
-        <mat-card-subtitle>Hola {{pedido.nombre+''+pedido.apellido}}</mat-card-subtitle>
+        <mat-card-subtitle>Hola {{usuario.nombre}}</mat-card-subtitle>
         <mat-dialog-content>
           <p>Gracias por tu preferencia tu pedido se registro con exito</p>
-          <p>se te registro un total de {{pedido.producto.length}} pedidos el cual el
-            precio registrado es de {{pedido.precio}}
+          <p>se te registro un total de {{addPedidos.length}} pedidos el cual el
+            precio registrado es de {{datosPedido.precio}}
           </p>
-          <p>
+          <!-- <p>
             en unos instantes se procedera a comunicarte al numero +51-{{pedido.celular}}
             para poder coordinar el envio y confirmar su direccion {{pedido.direccion}} y su Referencia
             {{pedido.refrencia}}.
-          </p>
+          </p> -->
           <p>Gracias por tu preferencia.......</p>
         </mat-dialog-content>
-      </mat-card> -->
+      </mat-card>
       <div>
         <button mat-button (click)="Productos = []">OK</button>
       </div>

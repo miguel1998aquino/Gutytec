@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/core/models/user.inteface';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-perfil',
@@ -8,23 +10,26 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class PerfilComponent implements OnInit {
 
-  usuario:any;
+  Usuario!:User;
 
-  constructor( private serviceAuth:AuthService) { }
+  constructor( private serviceAuth:AuthService,private userService:UsersService) { }
 
   ngOnInit(): void {
-    this.traerUser();
+    this.traerUid();
+
   }
 
-  traerUser(){
-    this.serviceAuth.hasUser().subscribe(res=>{
-      const datos ={
-        nombre:res?.displayName,
-        image: res?.photoURL,
-        email:res?.email
-      }
-      this.usuario=datos;
+  traerUid(){
+    this.serviceAuth.hasUser().subscribe((res:any)=>{
+      var id=res?.uid
+      this.traerUser(id)
+    })
+  }
 
+  traerUser(uid:string){
+    this.userService.getUser(uid).subscribe((res:any)=>{
+      this.Usuario=res
+      console.log(this.Usuario)
     })
   }
 

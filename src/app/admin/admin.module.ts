@@ -10,6 +10,7 @@ import { ListCategoryComponent } from './components/list-category/list-category.
 import { CrearCategoryComponent } from './components/crear-category/crear-category.component';
 import { CrearCrearProductComponent } from './components/crear-crear-product/crear-crear-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListOrdenesComponent } from './components/list-ordenes/list-ordenes.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListCategoryComponent,
     CrearCategoryComponent,
     CrearCrearProductComponent,
+    ListOrdenesComponent,
   ],
   imports: [
     CommonModule,

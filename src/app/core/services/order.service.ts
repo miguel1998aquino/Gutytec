@@ -12,14 +12,14 @@ export class OrderService {
   agregarOrder(order: Order): Promise<any> {
     return this.firestore.collection('order').add(order);
   }
-  verOrder(): Observable<any> {
+  verOrders(): Observable<any> {
     return this.firestore.collection('order').snapshotChanges();
   }
 
-  verMyOrder(uid: string): Observable<any> {
+  verMyOrders(uid: string): Observable<any> {
     return this.firestore
       .collection('order', (ref) => ref.where('cliente', '==', uid))
-      .valueChanges();
+      .snapshotChanges();
   }
   elimarOrder(id: string): Promise<any> {
     return this.firestore.collection('order').doc(id).delete();

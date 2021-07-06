@@ -20,7 +20,6 @@ export class ListCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategory();
-    console.log(this.dataSource);
   }
 
   getCategory() {

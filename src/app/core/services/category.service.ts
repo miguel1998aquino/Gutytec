@@ -18,7 +18,7 @@ export class CategoryService {
   }
 
   verCategoria(id: string): Observable<any> {
-    return this.firestore.collection('categorias').doc(id).snapshotChanges();
+    return this.firestore.collection('categorias').doc(id).valueChanges();
   }
 
   eliminarCategoria(id: string): Promise<any> {

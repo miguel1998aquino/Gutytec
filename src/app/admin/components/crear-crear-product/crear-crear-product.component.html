@@ -10,9 +10,9 @@
         <mat-label>Descripcion</mat-label>
         <textarea matInput formControlName="descripcion" placeholder="ingrese descripcion"></textarea>
       </mat-form-field>
-        <div class="mt-2 mb-4">
+        <div class="div">
           <input type="file" (change)="FotoEvento($event)" class="input">
-          <mat-progress-bar *ngIf="cargando == true" mode="indeterminate" class="mt-2 file"></mat-progress-bar>
+          <mat-progress-bar *ngIf="cargando == true" mode="indeterminate" class="file"></mat-progress-bar>
         </div>
       <mat-form-field appearance="outline">
         <mat-label>Precio</mat-label>
