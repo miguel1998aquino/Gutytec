@@ -6,14 +6,14 @@
   </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-    <ng-container *ngIf="column !== 'editar' && column !== 'eliminar'">
+    <ng-container *ngIf="column !== 'crear' && column !== 'eliminar'">
       <th mat-header-cell *matHeaderCellDef>{{column}}</th>
       <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
     </ng-container>
-    <ng-container *ngIf="column ==='editar'">
+    <ng-container *ngIf="column ==='crear'">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button><mat-icon (click)="edicion(element)">edit</mat-icon></button>
+        <button mat-button><mat-icon (click)="edicion(element)">open_in_new</mat-icon></button>
       </td>
     </ng-container>
     <ng-container *ngIf="column ==='eliminar'">

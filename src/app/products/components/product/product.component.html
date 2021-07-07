@@ -4,6 +4,13 @@
 
 <div *ngIf="productos">
   <h1 class="example-card">Productos</h1>
+  <mat-form-field class="example-card" appearance="outline">
+    <mat-label>Buscar Por Nombre</mat-label>
+    <input matInput type="text" [(ngModel)]="value" (keyup.enter)="buscador()">
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
   <div class="example-card">
     <mat-card [class.mat-elevation-z20]="true" *ngFor="let p of productos">
       <mat-card-header class="example-card">
@@ -30,5 +37,5 @@
       </mat-card-actions>
     </mat-card>
   </div>
-
 </div>
+

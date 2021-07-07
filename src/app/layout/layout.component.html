@@ -12,7 +12,7 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="['/home']">Home</button>
     <button mat-menu-item [routerLink]="['/product']">productos</button>
-    <button mat-menu-item [routerLink]="['/admin']" *ngIf=" botones != null">Admin</button>
+    <button mat-menu-item [routerLink]="['/admin']" *ngIf=" botones != null && authService.rol=='admin'">Admin</button>
   </mat-menu>
   <span>My App</span>
   <span class="example-spacer"></span>
@@ -21,7 +21,7 @@
     <button class="button" mat-button [routerLink]="['/product']">
       Productos
     </button>
-    <button class="button" mat-button [routerLink]="['/admin']" *ngIf=" botones != null">Admin</button>
+    <button class="button" mat-button [routerLink]="['/admin']" *ngIf=" botones != null && authService.rol=='admin'">Admin</button>
   </div>
   <span class="example-spacer"></span>
 
@@ -34,7 +34,7 @@
   >
     <mat-icon>login</mat-icon>
   </button>
-  <button *ngIf=" botones != null"
+  <button *ngIf=" botones != null && authService.rol=='cliente'"
     mat-icon-button
     matBadge="{{carritoService.product.length}}" matBadgeColor="warn"
     class="example-icon"
@@ -52,7 +52,7 @@
     <mat-icon>settings</mat-icon>
   </button>
   <mat-menu #options="matMenu">
-    <button mat-menu-item [routerLink]="['cliente']">Perfil</button>
+    <button mat-menu-item [routerLink]="['cliente']" *ngIf="authService.rol=='cliente'">Perfil</button>
     <button mat-menu-item (click)="salir()">salir</button>
   </mat-menu>
 </mat-toolbar>

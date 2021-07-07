@@ -16,7 +16,6 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.traerUid();
-
   }
 
   traerUid(){

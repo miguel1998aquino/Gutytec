@@ -9,7 +9,7 @@ import { OrderService } from 'src/app/core/services/order.service';
 })
 export class MyOrderComponent implements OnInit {
   dataSource: any[] = [];
-  displayedColumns = ['email', 'precio', 'eliminar','editar'];
+  displayedColumns = ['email', 'precio','crear'];
   constructor( private oderService:OrderService,private authService:AuthService) { }
 
   ngOnInit(): void {
@@ -19,13 +19,13 @@ export class MyOrderComponent implements OnInit {
   traerUid(){
     this.authService.hasUser().subscribe((res:any)=>{
       var id = res.uid
+      console.log(id)
       this.myOrder(id);
     })
   }
 
   myOrder(uid:string){
     this.oderService.verMyOrders(uid).subscribe((res)=>{
-      console.log(res)
       this.dataSource=[];
       res.forEach((element: any) => {
         this.dataSource.push({
@@ -33,8 +33,8 @@ export class MyOrderComponent implements OnInit {
           ...element.payload.doc.data(),
         })
       })
-    })
-  }
+  })
+}
 
   edicion(e: any) {}
 

@@ -24,8 +24,12 @@ export class ProductService {
     return this.firestore.collection('categorias').doc(id).valueChanges();
   }
 
-  verProduct(id:string): Observable<any>{
+  verProduct(id:string){
     return this.firestore.collection('productos').doc(id).valueChanges();
+  }
+
+  BuscarNombre(nombre:string){
+    return this.firestore.collection('productos',ref=> ref.where('nombre','==',nombre)).snapshotChanges()
   }
 
   eliminarProducto(id:string){
@@ -36,7 +40,7 @@ export class ProductService {
     return this.firestore.collection('productos').doc(id).update(producto)
   }
 
-  actualizarStock(id:string,Astock:number): Promise<any>{
+  actualizarStock(id:string,Astock:number){
     return this.firestore.collection('productos').doc(id).update({stock:Astock})
   }
 

@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from 'src/app/core/services/users.service';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     private dialog: MatDialog,
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private userService:UsersService
+    private userService: UsersService
   ) {
     this.login = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -32,9 +33,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   register() {
     const dialogRef = this.dialog.open(RegisterComponent, {
@@ -49,22 +48,21 @@ export class LoginComponent implements OnInit {
       const value = this.login.value;
       this.auth
         .login(value.email, value.password)
-        .then((result:any) => {
-          var id = result.user?.uid
-          this.localStorage(id)
+        .then((result: any) => {
+          var id = result.user?.uid;
+          this.localStorage(id);
           this.router.navigate(['home']);
         })
         .catch((error) => {
-          this.toastr.error('Tus Datos Ingresado no son validos','Invalido')
+          this.toastr.error('Tus Datos Ingresado no son validos', 'Invalido');
         });
     }
   }
 
-  localStorage(uid:string){
-    this.userService.getUser(uid).subscribe((res)=>{
-      this.auth.guardarLocalStorage(res)
-    })
+  localStorage(uid: string) {
+    this.userService.getUser(uid).subscribe((res) => {
+      this.auth.roles(res.rol);
+      this.auth.guardarLocalStorage(res);
+    });
   }
-
-
 }

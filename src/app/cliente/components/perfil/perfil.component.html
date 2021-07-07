@@ -1,4 +1,7 @@
-<div class="row">
+<div class="centrar" *ngIf="!Usuario">
+  <mat-spinner color="primary"></mat-spinner>
+</div>
+<div class="row" *ngIf="Usuario">
   <mat-card class="example-card">
     <mat-card-header>
         <img

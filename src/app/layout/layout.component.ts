@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -12,7 +12,8 @@ import { CarritoService } from '../core/services/carrito.service';
   styleUrls: ['./layout.component.css'],
 })
 export class LayoutComponent implements OnInit {
-  botones:any
+  botones:any;
+  data:any;
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -24,11 +25,14 @@ export class LayoutComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     public auth: AuthService,
     private router: Router,
-    public carritoService: CarritoService
+    public carritoService: CarritoService,
+    public authService: AuthService,
   ) {}
 
+
   ngOnInit(): void {
-    this.ocultarBoton()
+    this.ocultarBoton();
+
   }
 
   salir() {
@@ -41,7 +45,17 @@ export class LayoutComponent implements OnInit {
   ocultarBoton() {
     this.auth.hasUser().subscribe((result:any) => {
       this.botones=result
-
+      this.roles()
     });
   }
+
+  roles() {
+    if(this.authService.traerLocal() != undefined){
+      this.data=this.authService.traerLocal()
+      this.authService.roles(this.data.rol)
+
+    }
+  }
+
+
 }

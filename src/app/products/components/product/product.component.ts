@@ -11,12 +11,17 @@ import { DetalleProductComponent } from '../detalle-product/detalle-product.comp
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+
+
+
   productos: Product[] = [];
+  value="Buscador";
+  datos:any[] = [];
 
   constructor(
     public dialog: MatDialog,
     private productService: ProductService,
-    private carritoService:CarritoService,
+    private carritoService: CarritoService
   ) {}
 
   ngOnInit(): void {
@@ -24,7 +29,7 @@ export class ProductComponent implements OnInit {
   }
 
   traerProductos() {
-    this.productService.verProducts().subscribe((res) => {
+    this.productService.verProducts().subscribe((res:any) => {
       res.forEach((element: any) => {
         // this.productService.categorias()
         this.productos.push({
@@ -32,6 +37,8 @@ export class ProductComponent implements OnInit {
           ...element.payload.doc.data(),
         });
       });
+
+      console.log(this.productos);
     });
   }
 
@@ -47,7 +54,25 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  Comprar(producto:Product){
+  Comprar(producto: Product) {
     this.carritoService.addCarrito(producto);
+  }
+  buscador() {
+    if (this.value){
+      console.log(this.value);
+      this.productService.BuscarNombre(this.value).subscribe((data:any) =>{
+        data.forEach((element: any) => {
+          this.datos=[];
+          this.datos.push({
+            id: element.payload.doc.id,
+            ...element.payload.doc.data(),
+          });
+        });
+        this.productos=this.datos;
+        console.log(this.datos)
+      })
+    }else{
+      return;
+    }
   }
 }

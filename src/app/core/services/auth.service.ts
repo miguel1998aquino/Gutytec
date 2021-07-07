@@ -4,13 +4,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
 import { User } from '../models/user.inteface';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-
-  localStorage:any
+  localStorage: any;
+  rol!: string;
   constructor(
     private auth: AngularFireAuth,
     private firestore: AngularFirestore
@@ -54,37 +53,43 @@ export class AuthService {
   }
 
   userDatos(
-    id:string,
+    id: string,
     nombre: string,
     apellidos: string,
     direccion: string,
     telefono: number,
     DNI: number,
-    image:string,
+    image: string
   ) {
-    const usuario:User={
+    const usuario: User = {
       nombre: nombre,
       apellidos: apellidos,
       direccion: direccion,
       telefono: telefono,
       DNI: DNI,
-      rol:'cliente',
-      image: image
-    }
-      console.log(usuario)
-    this.firestore.doc(`users/${id}`).set(usuario)
+      rol: 'cliente',
+      image: image,
+    };
+    console.log(usuario);
+    this.firestore.doc(`users/${id}`).set(usuario);
   }
 
   hasUser() {
     return this.auth.authState;
   }
 
-  guardarLocalStorage(data:User) {
+  guardarLocalStorage(data: User) {
     localStorage.setItem('usuario', JSON.stringify(data));
   }
 
   traerLocal() {
-  return JSON.parse(localStorage.getItem('usuario')!);
-    
+    if(localStorage.getItem('usuario') !== undefined){
+    return JSON.parse(localStorage.getItem('usuario')!);
+    }
+  }
+
+  roles(rol: string) {
+    this.rol = rol;
+    console.log(rol);
   }
 }
