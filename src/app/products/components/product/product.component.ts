@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { NgxSpinnerService } from "ngx-spinner";
 import { Product } from 'src/app/core/models/product.interface';
 import { CarritoService } from 'src/app/core/services/carrito.service';
 import { ProductService } from 'src/app/core/services/product.service';
@@ -21,11 +22,17 @@ export class ProductComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private productService: ProductService,
-    private carritoService: CarritoService
+    private carritoService: CarritoService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
     this.traerProductos();
+    this.spinner.show();
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 4000);
   }
 
   traerProductos() {

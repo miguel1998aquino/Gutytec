@@ -11,6 +11,7 @@ import { CrearCategoryComponent } from './components/crear-category/crear-catego
 import { CrearCrearProductComponent } from './components/crear-crear-product/crear-crear-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListOrdenesComponent } from './components/list-ordenes/list-ordenes.component';
+import { DetalleUserComponent } from './components/detalle-user/detalle-user.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ListOrdenesComponent } from './components/list-ordenes/list-ordenes.com
     CrearCategoryComponent,
     CrearCrearProductComponent,
     ListOrdenesComponent,
+    DetalleUserComponent,
   ],
   imports: [
     CommonModule,

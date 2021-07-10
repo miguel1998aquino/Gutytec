@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClienteRoutingModule } from './cliente-routing.module';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -20,6 +21,7 @@ import { ClienteRoutingModule } from './cliente-routing.module';
     MaterialModule,
     ReactiveFormsModule,
     ClienteRoutingModule,
+    NgxSpinnerModule
   ]
 })
 export class ClienteModule { }

@@ -6,11 +6,12 @@
         <mat-card-header>
           <mat-card-title>
             {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <button mat-icon-button class="more-button" matTooltip="Acciones de la tabla" [matMenuTriggerFor]="menu" aria-label="Toggle menu" *ngIf="card.title !='Usuarios'">
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item (click)="crear(card.title)">Crear</button>
+              <button mat-menu-item (click)="crear(card.title)" *ngIf="card.title =='Productos'|| card.title =='Categorias'">Crear</button>
+              <button mat-menu-item *ngIf="card.title =='Ordenes'">Ordenar</button>
             </mat-menu>
           </mat-card-title>
         </mat-card-header>

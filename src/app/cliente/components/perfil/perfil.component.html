@@ -1,6 +1,11 @@
-<div class="centrar" *ngIf="!Usuario">
-  <mat-spinner color="primary"></mat-spinner>
-</div>
+<ngx-spinner
+  bdColor="rgba(9,9,5,0.8)"
+  size="medium"
+  color="#184eae"
+  type = "pacman"
+>
+  <p style="font-size: 20px; color: white">Cargando Perfil...</p>
+</ngx-spinner>
 <div class="row" *ngIf="Usuario">
   <mat-card class="example-card">
     <mat-card-header>

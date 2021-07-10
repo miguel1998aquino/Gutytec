@@ -21,6 +21,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -47,7 +48,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatStepperModule,
     MatBadgeModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
 
   ],
   exports: [
@@ -73,7 +75,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatStepperModule,
     MatBadgeModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ],
 })
 export class MaterialModule {}

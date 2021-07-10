@@ -1,6 +1,11 @@
-<div class="centrar" *ngIf="!productos">
-  <mat-spinner color="accent"></mat-spinner>
-</div>
+<ngx-spinner
+  bdColor="rgba(9,9,5,0.8)"
+  size="large"
+  color="#184eae"
+  type = "square-jelly-box"
+>
+  <p style="font-size: 20px; color: white">Cargando Productos...</p>
+</ngx-spinner>
 
 <div *ngIf="productos">
   <h1 class="example-card">Productos</h1>

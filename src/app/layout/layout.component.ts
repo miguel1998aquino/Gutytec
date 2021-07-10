@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
 import { CarritoService } from '../core/services/carrito.service';
+import { HomeService } from '../core/services/home.service';
 
 @Component({
   selector: 'app-layout',
@@ -13,6 +14,7 @@ import { CarritoService } from '../core/services/carrito.service';
 })
 export class LayoutComponent implements OnInit {
   botones:any;
+  tienda:any;
   data:any;
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -27,11 +29,13 @@ export class LayoutComponent implements OnInit {
     private router: Router,
     public carritoService: CarritoService,
     public authService: AuthService,
+    private homeService: HomeService
   ) {}
 
 
   ngOnInit(): void {
     this.ocultarBoton();
+    this.traerTienda();
 
   }
 
@@ -55,6 +59,14 @@ export class LayoutComponent implements OnInit {
       this.authService.roles(this.data.rol)
 
     }
+  }
+
+  traerTienda(){
+    this.homeService.verHome().subscribe(
+      response=>{
+        this.tienda= response
+      }
+    )
   }
 
 

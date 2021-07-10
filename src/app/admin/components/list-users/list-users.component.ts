@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/core/services/users.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DetalleUserComponent } from '../detalle-user/detalle-user.component';
 
 @Component({
   selector: 'app-list-users',
@@ -8,8 +10,8 @@ import { UsersService } from 'src/app/core/services/users.service';
 })
 export class ListUsersComponent implements OnInit {
   dataSource: any[] = [];
-  displayedColumns = ['nombre','DNI','editar','eliminar'];
-  constructor(private userService:UsersService) { }
+  displayedColumns = ['nombre','DNI','Ver'];
+  constructor(private userService:UsersService,public dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.getUsers()
@@ -26,8 +28,14 @@ export class ListUsersComponent implements OnInit {
       })
     })
   }
-  edicion(e:any){}
-
-  eliminar(e:any){}
+  ver(e:string){
+    const dialogRef = this.dialog.open(DetalleUserComponent, {
+      height: '540px',
+      width: '400px',
+      panelClass:'custom',
+      data: e,
+    });
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
 
 }

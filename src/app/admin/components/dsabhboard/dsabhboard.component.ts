@@ -17,7 +17,7 @@ export class DsabhboardComponent implements OnInit {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Prductos', cols: 1, rows: 1 },
+          { title: 'Productos', cols: 1, rows: 1 },
           { title: 'Categorias', cols: 1, rows: 1 },
           { title: 'Usuarios', cols: 1, rows: 1 },
           { title: 'Ordenes', cols: 1, rows: 1 }

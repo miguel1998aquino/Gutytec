@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { element } from 'protractor';
 import { OrderService } from 'src/app/core/services/order.service';
 import { UsersService } from 'src/app/core/services/users.service';
@@ -13,7 +14,8 @@ export class ListOrdenesComponent implements OnInit {
   displayedColumns = ['cliente', 'precio', 'editar', 'eliminar'];
   constructor(
     private orderService: OrderService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -41,5 +43,10 @@ export class ListOrdenesComponent implements OnInit {
 
   edicion(e: any) {}
 
-  eliminar(e: any) {}
+  eliminar(e: any) {
+    console.log(e.id)
+    this.orderService.elimarOrder(e.id).then(res=>{
+      this.toastr.info('La Orden se ah Eliminado','Eliminado')
+    })
+}
 }

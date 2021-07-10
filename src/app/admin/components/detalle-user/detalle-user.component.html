@@ -1,0 +1,13 @@
+<mat-card *ngIf="user">
+  <div class="container">
+    <mat-card-title>usuario</mat-card-title>
+    <img src="{{ user.image}}" alt="{{ user.nombre}}">
+    <mat-card-content>
+      <p>NOMBRE: {{user.nombre}}-{{user.apellidos}}</p>
+      <p>DIRECCION: {{user.direccion}}</p>
+      <p>TELEFONO: {{user.telefono}}</p>
+      <p>DNI: {{user.DNI}}</p>
+    </mat-card-content>
+  </div>
+  </mat-card>
+

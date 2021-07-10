@@ -10,3 +10,7 @@ table {
 span{
   margin-right:30%
 }
+.contenido{
+  max-width:100%;
+  max-height:100%
+}
