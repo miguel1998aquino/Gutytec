@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CrearCategoryComponent implements OnInit {
   public title: string;
   crearCategoria: FormGroup;
+  data:any;
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +29,9 @@ export class CrearCategoryComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.EsEditar();
+  }
 
   agregarEditar() {
     if (this.crearCategoria.invalid) {
@@ -37,7 +40,22 @@ export class CrearCategoryComponent implements OnInit {
     if (this.id === null) {
       this.agregarCategoria();
     } else {
+      this.title='Editar Categoria';
       this.editarCategoria(this.id);
+    }
+  }
+
+  EsEditar(){
+    if(this.id != null){
+      this.title='Editar Categoria';
+      this.serviceCategory.verCategoria(this.id).subscribe(data =>{
+        this.data=data;
+        this.crearCategoria.setValue({
+          nombre:this.data.nombre,
+          descripcion: this.data.descripcion,
+        })
+
+      })
     }
   }
   agregarCategoria() {
@@ -59,6 +77,7 @@ export class CrearCategoryComponent implements OnInit {
         console.log(err);
       });
   }
+
   editarCategoria(id: string) {
     const categoria: Category = {
       nombre: this.crearCategoria.value.nombre,

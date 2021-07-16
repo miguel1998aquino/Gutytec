@@ -38,8 +38,8 @@ export class ListCategoryComponent implements OnInit {
   }
   edicion(e: any) {
     const dialogRef = this.dialog.open(CrearCategoryComponent, {
-      height: '530px',
-      width: '400px',
+      width: '270px',
+      panelClass:'custom',
       data: e.id,
     });
     dialogRef.afterClosed().subscribe((result) => {});

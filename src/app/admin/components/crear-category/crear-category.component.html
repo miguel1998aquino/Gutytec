@@ -1,5 +1,5 @@
 <div class="dialogo">
-  <h1 mat-dialog-title>Crear Usuario</h1>
+  <h1 mat-dialog-title>{{title}}</h1>
   <mat-dialog-content>
     <form [formGroup]="crearCategoria">
       <mat-form-field appearance="fill">
@@ -14,11 +14,11 @@
         <button mat-mini-fab disabled >
           <mat-icon color="accent" (click)="cancelar()">keyboard_return</mat-icon>
         </button>
-        <!-- <button  mat-mini-fab disabled >
+        <button  mat-mini-fab disabled *ngIf="title=='Editar Categoria'">
           <mat-icon (click)="agregarEditar()" color="primary">edit_note</mat-icon>
-        </button> -->
-        <button   mat-mini-fab disabled >
-          <mat-icon (click)="agregarCategoria()" color="primary">add_circle</mat-icon>
+        </button>
+        <button   mat-mini-fab disabled *ngIf="title=='Crear Categoria'">
+          <mat-icon (click)="agregarEditar()" color="primary">add_circle</mat-icon>
         </button>
       </mat-card-actions>
     </form>

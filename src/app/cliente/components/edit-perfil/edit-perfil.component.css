@@ -1,6 +1,5 @@
 .dialogo{
   text-align: center;
-  
 
 }
 .file{
@@ -16,9 +15,11 @@
   margin-bottom: 10px;
 }
 
-button{
-  margin-top: 0px;
-  margin-right: 6px;
+.hila{
+  justify-content:center;
+  align-items: center;
+
 }
-
-
+.dialogo{
+  text-align: center;
+}

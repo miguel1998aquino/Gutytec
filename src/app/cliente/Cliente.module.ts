@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClienteRoutingModule } from './cliente-routing.module';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.component';
 
 
 
@@ -14,7 +15,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
   declarations: [
     CarritoComponent,
     MyOrderComponent,
-    PerfilComponent
+    PerfilComponent,
+    EditPerfilComponent
   ],
   imports: [
     CommonModule,

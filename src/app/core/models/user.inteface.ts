@@ -6,7 +6,7 @@ export interface User {
   password?: string;
   telefono: number;
   email?: string;
-  rol:string;
+  rol?:string;
   DNI: number;
   image:string;
 }
