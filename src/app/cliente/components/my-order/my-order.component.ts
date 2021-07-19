@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { OrderService } from 'src/app/core/services/order.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DetalleOrderComponent } from '../detalle-order/detalle-order.component';
 @Component({
   selector: 'app-my-order',
   templateUrl: './my-order.component.html',
@@ -10,7 +11,7 @@ import { OrderService } from 'src/app/core/services/order.service';
 export class MyOrderComponent implements OnInit {
   dataSource: any[] = [];
   displayedColumns = ['email', 'precio','crear'];
-  constructor( private oderService:OrderService,private authService:AuthService) { }
+  constructor( private oderService:OrderService,private authService:AuthService,public dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.traerUid()
@@ -31,12 +32,22 @@ export class MyOrderComponent implements OnInit {
         this.dataSource.push({
           id:element.payload.doc.id,
           ...element.payload.doc.data(),
-        })
+        });
       })
   })
 }
 
-  edicion(e: any) {}
+  ver(e: any) {
+    const dialogRef = this.dialog.open(DetalleOrderComponent, {
+      height: '530px',
+      width: '400px',
+      data: e,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   eliminar(e: any) {}
 

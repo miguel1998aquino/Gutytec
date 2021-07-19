@@ -57,4 +57,5 @@ export class PerfilComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
     });
   }
+
 }

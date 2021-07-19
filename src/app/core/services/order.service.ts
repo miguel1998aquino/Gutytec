@@ -28,4 +28,8 @@ export class OrderService {
   actualizarOrder(id: string, order: Order): Promise<any> {
     return this.firestore.collection('order').doc(id).update(order);
   }
+
+  verOrder(id: string){
+    return this.firestore.collection('order').doc(id).valueChanges();
+  }
 }

@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 mat-dialog-title>Pedido</h1>
+  <div mat-dialog-content *ngIf="pedido">
+    <p> Su pedido esta en proceso</p>
+    <p>Email: {{pedido.email}}</p>
+    <p>El total del pedido es : {{pedido?.precio}}</p>
+    <p>se pedio {{pedido.productos.length}} accesorios</p>
+    <button mat-raised-button color="primary" (click)="traerProducto()" *ngIf="control==false">Productos</button>
+        <div *ngIf="data != null||control==true">
+          <div *ngFor="let i of data">
+            <p>Nombre del accesorio: {{i?.nombre}}</p>
+            <p>Precio: {{i?.precio}}</p>
+          </div>
+        </div>
+
+  </div>
+</div>

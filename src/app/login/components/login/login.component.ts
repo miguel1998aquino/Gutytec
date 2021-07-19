@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from 'src/app/core/services/users.service';
-import { threadId } from 'worker_threads';
+import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 
 @Component({
   selector: 'app-login',
@@ -64,5 +64,12 @@ export class LoginComponent implements OnInit {
       this.auth.roles(res.rol);
       this.auth.guardarLocalStorage(res);
     });
+  }
+  reset() {
+    const dialogRef = this.dialog.open(RecuperarPasswordComponent, {
+      width: '300px',
+      panelClass: 'custom',
+    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 }

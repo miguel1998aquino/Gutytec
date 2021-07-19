@@ -8,6 +8,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClienteRoutingModule } from './cliente-routing.module';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.component';
+import { DetalleOrderComponent } from './components/detalle-order/detalle-order.component';
 
 
 
@@ -16,7 +17,8 @@ import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.compon
     CarritoComponent,
     MyOrderComponent,
     PerfilComponent,
-    EditPerfilComponent
+    EditPerfilComponent,
+    DetalleOrderComponent
   ],
   imports: [
     CommonModule,

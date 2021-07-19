@@ -92,4 +92,8 @@ export class AuthService {
     this.rol = rol;
     console.log(rol);
   }
+
+  resetContrasena(email: string){
+    return this.auth.sendPasswordResetEmail(email);
+  }
 }
