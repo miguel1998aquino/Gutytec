@@ -1,0 +1,38 @@
+<div class="dialogo">
+  <h2 mat-dialog-title>{{title}}</h2>
+  <mat-dialog-content>
+    <form [formGroup]="EditarHome">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre de la tienda" formControlName="nombre" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput formControlName="descripcion" placeholder="ingrese descripcion"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Direccion</mat-label>
+        <input matInput type="text"  placeholder="Ingrese La direccion" formControlName="direccion" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="Email"  placeholder="Ingrese su correo" formControlName="email" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Facebook</mat-label>
+        <input matInput type="url"  placeholder="Ingrese url de su facebook" formControlName="facebook" required>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-mini-fab disabled >
+          <mat-icon color="primary" (click)="cancelar()">keyboard_return</mat-icon>
+        </button>
+        <button *ngIf="EditarHome.valid" mat-mini-fab disabled >
+          <mat-icon (click)="Editar()" color="primary">add_circle</mat-icon>
+        </button>
+      </mat-card-actions>
+
+    </form>
+  </mat-dialog-content>
+
+</div>
+

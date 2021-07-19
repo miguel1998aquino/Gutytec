@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CrearCategoryComponent } from '../crear-category/crear-category.component';
 import { CrearCrearProductComponent } from '../crear-crear-product/crear-crear-product.component';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { EditarHomeComponent } from '../editar-home/editar-home.component';
 
 @Component({
   selector: 'app-dsabhboard',
@@ -64,5 +65,13 @@ export class DsabhboardComponent implements OnInit {
     }else{
       console.log($value)
     }
+  }
+  editarHome(){
+    const dialogRef = this.dialog.open(EditarHomeComponent, {
+      height: '530px',
+      width: '330px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+    });
   }
 }

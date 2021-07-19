@@ -12,6 +12,7 @@ import { CrearCrearProductComponent } from './components/crear-crear-product/cre
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListOrdenesComponent } from './components/list-ordenes/list-ordenes.component';
 import { DetalleUserComponent } from './components/detalle-user/detalle-user.component';
+import { EditarHomeComponent } from './components/editar-home/editar-home.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DetalleUserComponent } from './components/detalle-user/detalle-user.com
     CrearCrearProductComponent,
     ListOrdenesComponent,
     DetalleUserComponent,
+    EditarHomeComponent,
   ],
   imports: [
     CommonModule,

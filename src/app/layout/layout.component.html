@@ -53,7 +53,6 @@
   </button>
   <mat-menu #options="matMenu">
     <button mat-menu-item [routerLink]="['cliente']" *ngIf="authService.rol=='cliente'">Perfil</button>
-    <button mat-menu-item *ngIf=" botones != null && authService.rol=='admin'">Tienda</button>
     <button mat-menu-item (click)="salir()">salir</button>
   </mat-menu>
 </mat-toolbar>
