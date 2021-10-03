@@ -1,4 +1,8 @@
 {
+  "projects": {
+    "default": "tiendasullana-8906d",
+    "tienda": "tienda-online-1aab9"
+  },
   "targets": {
     "tiendasullana-8906d": {
       "hosting": {
