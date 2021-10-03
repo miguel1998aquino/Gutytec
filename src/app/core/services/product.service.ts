@@ -24,7 +24,7 @@ export class ProductService {
     return this.firestore.collection('categorias').doc(id).valueChanges();
   }
 
-  verProduct(id:string){
+  verProduct(id:string) {
     return this.firestore.collection('productos').doc(id).valueChanges();
   }
 

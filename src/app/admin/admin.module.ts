@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListOrdenesComponent } from './components/list-ordenes/list-ordenes.component';
 import { DetalleUserComponent } from './components/detalle-user/detalle-user.component';
 import { EditarHomeComponent } from './components/editar-home/editar-home.component';
+import { DetalleOrdenComponent } from './components/detalle-orden/detalle-orden.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { EditarHomeComponent } from './components/editar-home/editar-home.compon
     ListOrdenesComponent,
     DetalleUserComponent,
     EditarHomeComponent,
+    DetalleOrdenComponent,
   ],
   imports: [
     CommonModule,

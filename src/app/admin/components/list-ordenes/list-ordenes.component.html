@@ -3,7 +3,7 @@
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-  <ng-container *ngIf="column !== 'editar' && column !== 'eliminar'">
+  <ng-container *ngIf="column !== 'editar' && column !== 'eliminar' && column !== 'ver'">
     <th mat-header-cell *matHeaderCellDef>{{column}}</th>
     <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
   </ng-container>
@@ -17,6 +17,12 @@
     <th mat-header-cell *matHeaderCellDef>Acciones</th>
     <td mat-cell *matCellDef="let element">
       <button mat-button><mat-icon (click)="eliminar(element)" matTooltip="Eliminar Pedido">delete_sweep</mat-icon></button>
+    </td>
+  </ng-container>
+  <ng-container *ngIf="column ==='ver'">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button><mat-icon (click)="ver(element)" matTooltip="er pedido">description</mat-icon></button>
     </td>
   </ng-container>
   </ng-container>

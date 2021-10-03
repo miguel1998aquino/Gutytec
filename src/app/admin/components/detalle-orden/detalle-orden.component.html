@@ -1,0 +1,26 @@
+<div class="alinear">
+  <h2 mat-dialog-title> Pedidos</h2>
+  <mat-dialog-content *ngIf="data">
+    <p>Cliente : {{data.cliente}}</p>
+    <p>Email: {{data.email}}</p>
+    <p>Total: {{data.precio}}</p>
+    <p>se requirio {{data.productos.length}} accesorios</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="verMas()" *ngIf="control==false">Productos</button>
+  </mat-dialog-actions>
+  <div *ngIf="control==true">
+    <div *ngFor="let item of datos" class="margin">
+      <mat-card-header>
+        <img
+          mat-card-avatar
+          class="example-header-image"
+          src="{{ item?.image }}"
+          alt="Photo of a Shiba Inu"
+        />
+      <mat-card-title>{{ item?.nombre }}</mat-card-title>
+      <mat-card-subtitle>Precio: {{ item?.precio }}</mat-card-subtitle>
+    </mat-card-header>
+    </div>
+  </div>
+</div>

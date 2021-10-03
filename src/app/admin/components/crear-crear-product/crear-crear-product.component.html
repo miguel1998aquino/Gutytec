@@ -29,13 +29,13 @@
         </mat-select>
       </mat-form-field>
       <mat-card-actions>
-        <button mat-mini-fab disabled >
+        <button mat-mini-fab>
           <mat-icon color="primary" (click)="cancelar()">keyboard_return</mat-icon>
         </button>
-        <button *ngIf="crearProducto.valid && title =='Editar Producto'" mat-mini-fab disabled >
+        <button *ngIf="crearProducto.valid && title =='Editar Producto'" mat-mini-fab>
           <mat-icon (click)="agregaEditar()" color="primary">edit_note</mat-icon>
         </button>
-        <button *ngIf="crearProducto.valid && title=='Crear Producto'" mat-mini-fab disabled >
+        <button *ngIf="crearProducto.valid && title=='Crear Producto'" mat-mini-fab >
           <mat-icon (click)="agregaEditar()" color="primary">add_circle</mat-icon>
         </button>
       </mat-card-actions>

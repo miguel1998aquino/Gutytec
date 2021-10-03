@@ -1,10 +1,15 @@
 <div class="content">
-  <div class="section">
+  <div class="section" *ngIf="dataSource.length !=0">
     <span class="mat-title">
       Mis pedidos
     </span>
   </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <div class="section">
+    <span class="mat-title">
+      No existen Pedidos
+    </span>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource.length !=0">
     <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
     <ng-container *ngIf="column !== 'crear' && column !== 'eliminar'">
       <th mat-header-cell *matHeaderCellDef>{{column}}</th>

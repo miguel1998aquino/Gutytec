@@ -98,6 +98,7 @@ export class CrearCrearProductComponent implements OnInit {
       .catch((err) => {
         this.toastr.error('Ups No se guardo','Error');
         this.dialogRef.close();
+        console.log(err);
       });
   }
   editarProducto(id: string) {
@@ -116,6 +117,7 @@ export class CrearCrearProductComponent implements OnInit {
         this.dialogRef.close();
       })
       .catch((err) => {
+        console.log(err);
         this.toastr.error('Error no se Edito','error')
         this.dialogRef.close();
       });
